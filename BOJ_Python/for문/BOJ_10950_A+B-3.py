@@ -25,7 +25,9 @@
 7
 '''
 T=int(input())
+
 while T:
     a,b=map(int,input().split())
-    print(a+b)
+    res=a+b
+    print(res)
     T=T-1

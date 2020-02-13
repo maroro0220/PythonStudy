@@ -23,7 +23,7 @@ import sys
 N=int(sys.stdin.readline())
 star=1
 while N:
-    print(' '*(N-1)+'*'*(star)) #+로 해야함
+    print(' '*(N-1),'*'*(star)) #+로 해야함
     N=N-1
     star=star+1
 
