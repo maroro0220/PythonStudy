@@ -26,8 +26,8 @@ ACM 호텔 매니저 지우는 손님이 도착하는 대로 빈 방을 배정�
 T=int(input())
 while(T):
     H,W,N=map(int,input().split())
-    c=(N//H)+1
-    r=int(N%H)
+    c=(N//H)+1#room number
+    r=int(N%H)#floor
     if(not r):
         r=H
         c=c-1
