@@ -1,11 +1,20 @@
 def solution(bridge_length, weight, truck_weights):
     answer = 0
-    on=[]
-    gone=[]
-    onsum=0
-    num_truck=len(truck_weights)
-    i=0
-    while(1):
+    bridge=[0]*bridge_length
+    sum=0
+    while bridge:
+        answer+=1
+        #if not len(bridge):
+        #    break
+        sum-=bridge[0]
+        bridge.pop(0)
+        if truck_weights:
+            if sum+truck_weights[0]<=weight:
+                sum+=truck_weights[0]
+                bridge.append(truck_weights.pop(0))
+            else:
+                bridge.append(0)
+        '''
         if(not len(on) and not len(truck_weights)):
             break
         answer+=1
@@ -41,6 +50,7 @@ def solution(bridge_length, weight, truck_weights):
             #if(len(gone) and not len(gone)%bridge_length):
                 #onsum-=gone[len(gone)//bridge_length]
         #answer+=1
+        '''
 
     return answer
 
