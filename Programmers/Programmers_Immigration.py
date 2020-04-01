@@ -1,17 +1,18 @@
 def solution(n, times):
-    answer = 0
+    #answer = 0
+    
     #left=min(times)*n
-    left=1
+    left=0
     right=max(times)*n
+    answer=right
     while(left<=right):
         mid=(left+right)//2
         sum=0
         for i in times:
             sum+=mid//i
-            #if sum>=n:
-                #break
         if sum>=n:
-            answer=mid
+            if answer>mid:
+                answer=mid
             right=mid-1
         elif sum<n:
             left=mid+1
