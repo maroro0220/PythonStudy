@@ -2,6 +2,7 @@ def Quick(arr,l,r):
     if l>r:
         return arr
     pivo=arr[(l+r)//2]
+    #pivo-(l+r)//2 안되는 이유는 arr[pivo]에 저장된 값이 swap하면서 바뀜
     #pivo=l
     left=l
     right=r

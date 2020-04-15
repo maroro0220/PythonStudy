@@ -8,24 +8,20 @@ def dfs(uid,bid,c):
     global tmp
     global ttmp
     if(c==len(bid)):
-        if len(ttmp):
-            for i in range(len(ttmp)):
-                print(ttmp)
-                if not (set(ttmp[i])-set(tmp)):
-                    cnt+=1
-                    ttmp.append(tmp)
-        else: ttmp.append(tmp)
+        cnt+=1
         return
     for i in range(c,len(bid)):
         for j in range(len(uid)):
             if(chk[j]==1): continue
             else:
+                print(j,end=' ')
+                print(i)
                 if(Chk(uid[j],bid[i])):
                     chk[j]=1
-                    tmp.append(uid[j])
+                    #tmp.append(uid[j])
                     dfs(uid,bid,c+1)
-                    tmp.remove(uid[j])
-                    chk[j]=0
+                    #tmp.remove(uid[j])
+                    #chk[j]=0
 
 def Chk(a, b):
     if(len(a)==len(b)):
@@ -43,10 +39,34 @@ def solution(user_id, banned_id):
     answer = 0
     global cnt
     global chk
-    chk=[0 for _ in range(len(user_id))]
     cnt=0
-    dfs(user_id,banned_id,0)
+    #dfs(user_id,banned_id,0)
+    for i in range(len(user_id)):
+        k=0
+        chk=[0 for _ in range(len(user_id))]
+        for j in range(len(user_id)):
+            if(k>=len(banned_id)): break
+            if(chk[j]==0):
+                if(Chk(user_id[j],banned_id[k])):
+                    chk[j]=1
+                    k+=1
+                if(k==len(banned_id)):
+                    cnt+=1
+            
+            '''
+            for k in range(len(banned_id)):
+                if(chkb[k]):
+                    continue
+                chkb[k]=1
+                if(Chk(user_id[j],banned_id[k])):
+                    c+=1
+                if(c==len(banned_id)):
+                    cnt+=1
+                    #chk[k]=0
+            '''
+
     answer=cnt
+    
     '''
     for s in banned_id:
         for ss in user_id:
